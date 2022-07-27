@@ -18,3 +18,12 @@ h1 {
   width: 95%;
   margin: auto;
 }
+
+.cities {
+  list-style: none;
+  padding: 0px;
+}
+
+li {
+  border: #000000 solid;
+}
