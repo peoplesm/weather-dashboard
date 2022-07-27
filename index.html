@@ -29,26 +29,39 @@
       <h1>Weather Dashboard</h1>
     </header>
     <div class="main-cont">
-      <form class="mb-3 col-2 border-bottom border-2 border-secondary">
-        <label for="exampleFormControlInput1" class="form-label fs-2 fw-bold"
-          >Search for a City:</label
-        >
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control cityinput"
-            placeholder="Denver"
-          /><button
-            class="btn btn-primary search"
-            type="submit"
-            id="button-addon1"
-          >
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </div>
-      </form>
+      <div class="row">
+        <!-- Search side bar and city list -->
 
-      <ul class="col-2 list-group cities"></ul>
+        <aside class="col-2 p-0">
+          <form class="mb-3 border-bottom border-2 border-secondary">
+            <label
+              for="exampleFormControlInput1"
+              class="form-label fs-2 fw-bold"
+              >Search for a City:</label
+            >
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control cityinput"
+                placeholder="Denver"
+              /><button
+                class="btn btn-primary search"
+                type="submit"
+                id="button-addon1"
+              >
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+          </form>
+
+          <ul class="list-group cities"></ul>
+        </aside>
+
+        <!--Day Forcast-->
+        <main class="col-10">
+          <div class="dayforecast"></div>
+        </main>
+      </div>
     </div>
 
     <script
