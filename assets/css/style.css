@@ -45,3 +45,49 @@ p {
   padding: 5px;
   border: #000000 solid 2px;
 }
+
+.fivetitle {
+  margin: 0px 10px;
+}
+
+.fiveday {
+  background-color: lightslategray;
+  flex-wrap: wrap;
+  margin: 10px;
+  margin-top: 5px;
+  padding: 5px;
+  border: #000000 solid 2px;
+  color: aliceblue;
+  justify-content: space-around;
+}
+
+.dailycard {
+  border: #000000 solid 2px;
+  background-color: #0c4e81;
+  padding: 3px;
+  min-width: fit-content;
+}
+
+@media (max-width: 800px) {
+  .fiveday {
+    justify-content: flex-start;
+  }
+  .dailycard {
+    min-width: fit-content;
+  }
+  .box {
+    flex-direction: column;
+  }
+  .searchCol {
+    width: 85%;
+    margin: auto;
+  }
+  main {
+    margin: auto;
+  }
+}
+@media (max-width: 500px) {
+  .dailycard {
+    width: 100%;
+  }
+}
