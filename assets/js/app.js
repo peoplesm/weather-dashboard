@@ -10,14 +10,6 @@ let cityBtn = document.querySelector(".citybtn");
 
 let cityLiArr = [];
 
-if (!dayForecastEl.innerHTML) {
-  dayForecastEl.setAttribute("style", "display: none");
-}
-if (!fiveDayEl.innerHTML) {
-  fiveDayEl.setAttribute("style", "display: none");
-  fiveDayTitle.setAttribute("style", "display: none");
-}
-
 function printCities(city) {
   let cityLi = document.createElement("li");
   cityUlEl.append(cityLi);
@@ -90,11 +82,25 @@ function oneCallWeather(lat, lon, city) {
           dayForecastEl.append(humidity);
           dayForecastEl.append(uvIndex);
           //Fill elements with current data
-          cityName.innerHTML = `${city} ${month}/${day}/${year} <img src="${currentWeatherIcon}" alt="${data3.current.weather[0].description}" />`;
+          cityName.innerHTML = `${city} ${month}/${day}/${year} <img src="${currentWeatherIcon}" alt="${data3.current.weather[0].description}" title="${data3.current.weather[0].description}"/>`;
           temp.textContent = `Temp: ${data3.current.temp}°F`;
           wind.textContent = `Wind Speed: ${data3.current.wind_speed} MPH`;
           humidity.textContent = `Humidity: ${data3.current.humidity}%`;
-          uvIndex.textContent = `UV Index: ${data3.current.uvi}`;
+          uvIndex.innerHTML = `UV Index: <span class="uvcolor">${data3.current.uvi}</span>`;
+
+          if (data3.current.uvi > 5) {
+            document
+              .querySelector(".uvcolor")
+              .setAttribute("style", "background-color: red");
+          } else if (data3.current.uvi <= 5 && data3.current.uvi > 2) {
+            document
+              .querySelector(".uvcolor")
+              .setAttribute("style", "background-color: yellow; color:black");
+          } else if (data3.current.uvi <= 2) {
+            document
+              .querySelector(".uvcolor")
+              .setAttribute("style", "background-color: green");
+          }
 
           //Generate 5 day forecast
 
@@ -129,6 +135,14 @@ function oneCallWeather(lat, lon, city) {
             dailyIcon.setAttribute(
               "src",
               "https://openweathermap.org/img/w/" + dailyInfo.icon + ".png"
+            );
+            dailyIcon.setAttribute(
+              "alt",
+              `${data3.daily[i].weather[0].description}`
+            );
+            dailyIcon.setAttribute(
+              "title",
+              `${data3.daily[i].weather[0].description}`
             );
             dailyTemp.textContent = `Temp: ${dailyInfo.temp}°F`;
             dailyWind.textContent = `Wind: ${dailyInfo.wind} MPH`;
@@ -172,6 +186,13 @@ function handleInput(event) {
 document.onreadystatechange = function () {
   if (document.readyState == "complete") {
     // document is ready. Do your stuff here
+    if (!dayForecastEl.innerHTML) {
+      dayForecastEl.setAttribute("style", "display: none");
+    }
+    if (!fiveDayEl.innerHTML) {
+      fiveDayEl.setAttribute("style", "display: none");
+      fiveDayTitle.setAttribute("style", "display: none");
+    }
     if (localStorage.getItem("city")) {
       renderCities();
     }

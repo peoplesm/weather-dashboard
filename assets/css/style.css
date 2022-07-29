@@ -51,6 +51,12 @@ p {
   border: #000000 solid 2px;
 }
 
+.uvcolor {
+  padding: 0px 5px;
+  border: #000000 solid 2px;
+  border-radius: 5px;
+}
+
 .fivetitle {
   margin: 0px 10px;
 }
@@ -71,6 +77,7 @@ p {
   background-color: #0c4e81;
   padding: 3px;
   min-width: fit-content;
+  margin-top: 3px;
 }
 
 @media (max-width: 800px) {
