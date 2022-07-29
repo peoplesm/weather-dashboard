@@ -32,6 +32,11 @@ h2 {
 li {
   border: #000000 solid;
 }
+li:hover {
+  background-color: #0c4e81;
+  color: aliceblue;
+  cursor: pointer;
+}
 
 p {
   font-size: 125%;

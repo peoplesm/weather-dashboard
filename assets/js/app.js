@@ -28,6 +28,9 @@ function printCities(city) {
   cityLi.addEventListener("click", function () {
     console.log(cityLi.textContent);
     getDayForecast(cityLi.textContent);
+    dayForecastEl.setAttribute("style", "display");
+    fiveDayEl.setAttribute("style", "display:flex");
+    fiveDayTitle.setAttribute("style", "display");
   });
 }
 
@@ -141,6 +144,13 @@ function oneCallWeather(lat, lon, city) {
     });
 }
 
+function renderCities() {
+  cityLiArr = JSON.parse(localStorage.getItem("city"));
+  for (let i = 0; i < cityLiArr.length; i++) {
+    printCities(cityLiArr[i]);
+  }
+}
+
 function handleInput(event) {
   event.preventDefault();
 
@@ -162,6 +172,9 @@ function handleInput(event) {
 document.onreadystatechange = function () {
   if (document.readyState == "complete") {
     // document is ready. Do your stuff here
+    if (localStorage.getItem("city")) {
+      renderCities();
+    }
     searchBtn.addEventListener("click", handleInput);
   }
 };
