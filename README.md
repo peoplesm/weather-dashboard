@@ -4,7 +4,7 @@ For this project, I was assigned to produce an app that allowed the user to inpu
 
 ## Skills Practiced
 
-- Storing an accessing local storage.
+- Storing and accessing local storage.
 - Use fetch to collect data from server API.
 - Using a server API key to request data based on user input.
 - Pulling relevent data from an API response
