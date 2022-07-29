@@ -1,3 +1,4 @@
+/* Top Header Bar */
 header {
   display: flex;
   justify-content: center;
@@ -14,16 +15,19 @@ h1 {
     -2px 0px 0 #000000, 0px -2px 0 #000000, 2px 2px 2px rgba(206, 89, 55, 0);
 }
 
+/* 5 Day Forecast Title */
 h2 {
   font-size: 200%;
   font-weight: bold;
 }
 
+/* Main Container */
 .main-cont {
   width: 95%;
   margin: auto;
 }
 
+/* Search History List */
 .cities {
   list-style: none;
   padding: 0px;
@@ -37,7 +41,11 @@ li:hover {
   color: aliceblue;
   cursor: pointer;
 }
+.citybtn {
+  font-weight: bold;
+}
 
+/* Forecast and current weather card's styleing */
 p {
   font-size: 125%;
   color: aliceblue;
@@ -80,6 +88,7 @@ p {
   margin-top: 3px;
 }
 
+/* Media Queries */
 @media (max-width: 800px) {
   .fiveday {
     justify-content: flex-start;
@@ -96,6 +105,10 @@ p {
   }
   main {
     margin: auto;
+  }
+  .citybtn {
+    display: flex;
+    justify-content: center;
   }
 }
 @media (max-width: 500px) {
