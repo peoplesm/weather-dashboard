@@ -6,6 +6,9 @@ let dayForecastEl = document.querySelector(".dayforecast");
 let fiveDayEl = document.querySelector(".fiveday");
 let fiveDayTitle = document.querySelector(".fivetitle");
 let searchBtn = document.querySelector(".search");
+let cityBtn = document.querySelector(".citybtn");
+
+let cityLiArr = [];
 
 if (!dayForecastEl.innerHTML) {
   dayForecastEl.setAttribute("style", "display: none");
@@ -21,6 +24,11 @@ function printCities(city) {
   cityLi.textContent = city;
   cityLi.classList.add("list-group-item");
   cityLi.classList.add("list-group-item-dark");
+  cityLi.classList.add("citybtn");
+  cityLi.addEventListener("click", function () {
+    console.log(cityLi.textContent);
+    getDayForecast(cityLi.textContent);
+  });
 }
 
 //Get lat long for city
@@ -100,16 +108,14 @@ function oneCallWeather(lat, lon, city) {
             };
             console.log(dailyInfo);
 
-            // let breakEl = document.createElement("br");
-            // fiveDayEl.append(breakEl);
             let dailyCard = document.createElement("div");
             dailyCard.classList.add("dailycard");
+            dailyCard.classList.add("col-2");
             let dailyDateEl = document.createElement("p");
             let dailyIcon = document.createElement("img");
             let dailyTemp = document.createElement("p");
             let dailyWind = document.createElement("p");
             let dailyHumidity = document.createElement("p");
-            dailyCard.classList.add("col-2");
             fiveDayEl.append(dailyCard);
             dailyCard.append(dailyDateEl);
             dailyCard.append(dailyIcon);
@@ -145,10 +151,17 @@ function handleInput(event) {
   dayForecastEl.setAttribute("style", "display");
   fiveDayEl.setAttribute("style", "display:flex");
   fiveDayTitle.setAttribute("style", "display");
-
+  cityLiArr.push(cityInput);
+  localStorage.setItem("city", JSON.stringify(cityLiArr));
   printCities(cityInput);
   getDayForecast(cityInput);
   cityInputEl.value = "";
 }
 
-searchBtn.addEventListener("click", handleInput);
+//init
+document.onreadystatechange = function () {
+  if (document.readyState == "complete") {
+    // document is ready. Do your stuff here
+    searchBtn.addEventListener("click", handleInput);
+  }
+};
